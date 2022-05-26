@@ -1,0 +1,4 @@
+VALID_OPERATOR = ['AND', 'OR']
+SQL = 'SQL'
+MONGO = 'MONGO'
+ORM = 'ORM'
