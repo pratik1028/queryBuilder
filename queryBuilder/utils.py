@@ -50,5 +50,7 @@ def remove_space_from_multi_word(
                 temp_input_query[i] = '_'
             i += 1
         temp_input_query.pop(i)
-
+    # Add ( ) if does not exists
+    if temp_input_query[0] != '(':
+       return '({})'.format("".join(temp_input_query))
     return "".join(temp_input_query)

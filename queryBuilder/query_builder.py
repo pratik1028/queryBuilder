@@ -46,6 +46,8 @@ def construct_mongo_query(
     curr_lvl = 0
     column_name = 'text'
     open_count = 0
+    if len(input_query) == 1:
+        return mongo_query.format({column_name: f'/.*{input_query[0][1:-1]}.*/'})
     for inp in input_query:
         if '_' in inp:
             inp = inp.replace('_', ' ')
@@ -110,6 +112,9 @@ def construct_orm_query(
     operator = []
     curr_lvl = 0
     open_count = 0
+    if len(input_query) == 1:
+        f = Q(text__icontains=input_query[0][1:-1])
+        return [obj.name for obj in Resume.objects.filter(f)]
     for inp in input_query:
         if '_' in inp:
             inp = inp.replace('_', ' ')
