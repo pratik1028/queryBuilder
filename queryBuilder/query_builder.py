@@ -95,7 +95,7 @@ def construct_mongo_query(
                 if optr_lvl == curr_lvl:
                     curr_lvl -= 1
         else:
-            stack.append(({column_name: '/.*{i}.*/'}, curr_lvl))
+            stack.append(({column_name: f'/.*{inp}.*/'}, curr_lvl))
     return mongo_query.format(json.dumps(result))
 
 
